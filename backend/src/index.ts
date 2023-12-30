@@ -6,10 +6,14 @@ import { expressMiddleware } from "@apollo/server/express4";
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 2000;
 
 const initServer = async () => {
-  app.use(cors());
+  app.use(
+    cors({
+      origin: process.env.ORIGIN,
+    })
+  );
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
