@@ -1,31 +1,16 @@
 // ESM
 import { faker } from "@faker-js/faker";
+import { readFileSync } from "fs";
+import path from "path";
+import User from "./interfaces/User";
 
-export const typeDefs = `
-    type User {
-        id: Int
-        name: String
-        username: String
-        email: String
-        phone: String
-        website: String
-    }
+const userTypes = readFileSync(path.join(__dirname, "./typeDefs/user.graphql"));
 
-    type Post {
-        id: Int
-        title: String
-        content: String
-    }
+export const typeDefs = `${userTypes}`;
 
-    type Query {
-        user(id: Int!): User
-        users: [User]
-    }
-`;
-
-function createRandomUser() {
+function createRandomUser(): User {
   return {
-    id: faker.number.int(),
+    id: +faker.string.numeric(),
     name: faker.person.firstName(),
     username: faker.internet.userName(),
     email: faker.internet.email(),
@@ -34,13 +19,15 @@ function createRandomUser() {
   };
 }
 
-const USERS = faker.helpers.multiple(createRandomUser, {
-  count: 5,
-});
-
 export const resolvers = {
   Query: {
-    user() {},
-    users() {},
+    user() {
+      createRandomUser();
+    },
+    users() {
+      return faker.helpers.multiple(createRandomUser, {
+        count: 5,
+      });
+    },
   },
 };
