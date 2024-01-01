@@ -24,6 +24,9 @@ const initServer = async () => {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.get("/", (req, res) => {
+    console.log("hello!");
+  });
   app.use("/graphql", expressMiddleware(server));
 
   app.listen(port, () => {
