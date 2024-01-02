@@ -8,7 +8,7 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import AllUsers from "./components/AllUsers";
+import Dashboard from "./components/Dashboard";
 
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -29,10 +29,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: backendConnexion,
 });
+
 function App() {
   return (
     <ApolloProvider client={client}>
-      <AllUsers />
+      <Dashboard />
     </ApolloProvider>
   );
 }

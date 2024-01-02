@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { USERS } from "../GraphQL/Queries";
 
-const AllUsers = () => {
+const Dashboard = () => {
   const { error, loading, data } = useQuery(USERS);
   const [users, setUsers] = useState(null);
 
@@ -22,4 +22,4 @@ const AllUsers = () => {
   );
 };
 
-export default AllUsers;
+export default Dashboard;
