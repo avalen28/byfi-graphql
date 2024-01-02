@@ -22,7 +22,7 @@ function createRandomUser(): User {
 export const resolvers = {
   Query: {
     user() {
-      createRandomUser();
+      return createRandomUser();
     },
     users() {
       return faker.helpers.multiple(createRandomUser, {
