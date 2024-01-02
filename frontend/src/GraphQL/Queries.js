@@ -6,5 +6,10 @@ export const USERS = gql`
       id
       name
     }
+    posts {
+      id
+      title
+      content
+    }
   }
 `;
