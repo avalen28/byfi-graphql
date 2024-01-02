@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import { USERS } from "../GraphQL/Queries";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { error, loading, data } = useQuery(USERS);
@@ -19,19 +20,21 @@ const Dashboard = () => {
       {users &&
         users.map((user, i) => {
           return (
-            <h3 key={i}>
-              ID {user.id} - Name: {user.name}
-            </h3>
+            <div key={i}>
+              <Link to="/user/detail">
+                ID {user.id} - Name: {user.name}
+              </Link>
+            </div>
           );
         })}
       <h2>All posts in our DB</h2>
       {posts &&
         posts.map((post, i) => {
           return (
-            <div>
-              <h3>
+            <div key={i}>
+              <Link to="/post/detail">
                 ID {post.id} - Title: {post.title}
-              </h3>
+              </Link>
             </div>
           );
         })}

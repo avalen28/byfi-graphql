@@ -1,7 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserDetail = () => {
-  return <div>User</div>;
+  return (
+    <div>
+      <Link to="/">Go back</Link>
+    </div>
+  );
 };
 
 export default UserDetail;
