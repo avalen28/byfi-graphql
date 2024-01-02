@@ -9,6 +9,7 @@ import axios from "axios";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 2000;
+const getRamdomNumber = () => Math.round(Math.random() * 10 + 1);
 
 const initServer = async () => {
   const server = new ApolloServer({
@@ -33,7 +34,7 @@ const initServer = async () => {
   app.get("/user/details", async (req, res) => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users/1"
+        `https://jsonplaceholder.typicode.com/users/${getRamdomNumber()}`
       );
       res.json(response.data);
     } catch (error) {
@@ -44,7 +45,7 @@ const initServer = async () => {
   app.get("/post/details", async (req, res) => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts/1"
+        `https://jsonplaceholder.typicode.com/posts/${getRamdomNumber()}`
       );
       res.json(response.data);
     } catch (error) {
