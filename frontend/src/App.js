@@ -6,7 +6,10 @@ import {
   from,
 } from "@apollo/client";
 import { onError } from "@apollo/client/link/error";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./views/Dashboard";
+import { Route, Routes } from "react-router-dom";
+import UserDetail from "./views/UserDetail";
+import PostDetail from "./views/PostDetail";
 
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -31,7 +34,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Dashboard />
+      <Routes>
+        <Route path="/home" element={<Dashboard />} />
+        <Route path="/user/detail" element={<UserDetail />} />
+        <Route path="/post/detail" element={<PostDetail />} />
+        <Route path="*" element={<Dashboard />} />
+      </Routes>
     </ApolloProvider>
   );
 }
