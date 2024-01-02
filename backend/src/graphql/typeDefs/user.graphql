@@ -8,6 +8,6 @@ type User {
 }
 
 type Query {
-  user(id: String!): User
+  user(id: Int!): User
   users: [User]
 }
