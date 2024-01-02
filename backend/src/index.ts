@@ -41,6 +41,17 @@ const initServer = async () => {
     }
   });
 
+  app.get("/post/details", async (req, res) => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts/1"
+      );
+      res.json(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
   app.use("/graphql", expressMiddleware(server));
 
   app.listen(port, () => {
