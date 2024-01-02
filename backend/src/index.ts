@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { typeDefs, resolvers } from "./graphql";
+import axios from "axios";
 
 dotenv.config();
 const app = express();
@@ -24,9 +25,22 @@ const initServer = async () => {
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+
   app.get("/", (req, res) => {
     console.log("hello!");
   });
+
+  app.get("/user/details", async (req, res) => {
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/users/1"
+      );
+      res.json(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
   app.use("/graphql", expressMiddleware(server));
 
   app.listen(port, () => {
