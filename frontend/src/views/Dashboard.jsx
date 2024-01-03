@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useQuery, gql } from "@apollo/client";
-import { USERS } from "../GraphQL/Queries";
 import { Link } from "react-router-dom";
+import { useUsersContext } from "../hooks/useUsersContext";
 
 const Dashboard = () => {
-  const { error, loading, data } = useQuery(USERS);
-  const [users, setUsers] = useState(null);
-  const [posts, setPosts] = useState(null);
+  const { users, posts } = useUsersContext();
+  const [usersFromContext, setUsersFromContext] = useState(null);
+  const [postsFromContext, setPostsFromContext] = useState(null);
 
   useEffect(() => {
-    if (data) {
-      setUsers(data.users);
-      setPosts(data.posts);
+    if (users && posts) {
+      setUsersFromContext(users);
+      setPostsFromContext(posts);
     }
-  }, [data]);
+  }, [users, posts]);
+
   return (
     <div>
       <h1>All users in our DB</h1>
-      {users &&
-        users.map((user, i) => {
+      {usersFromContext &&
+        usersFromContext.map((user, i) => {
           return (
             <div key={i}>
               <Link to="/user/detail">
@@ -28,8 +28,8 @@ const Dashboard = () => {
           );
         })}
       <h2>All posts in our DB</h2>
-      {posts &&
-        posts.map((post, i) => {
+      {postsFromContext &&
+        postsFromContext.map((post, i) => {
           return (
             <div key={i}>
               <Link to="/post/detail">

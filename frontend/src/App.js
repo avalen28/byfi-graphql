@@ -10,6 +10,7 @@ import Dashboard from "./views/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import UserDetail from "./views/UserDetail";
 import PostDetail from "./views/PostDetail";
+import { UsersDataWrapper } from "./context/UsersContext";
 
 
 const errorLink = onError(({ graphqlErrors, networkError }) => {
@@ -34,12 +35,14 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Routes>
-        <Route path="/home" element={<Dashboard />} />
-        <Route path="/user/detail" element={<UserDetail />} />
-        <Route path="/post/detail" element={<PostDetail />} />
-        <Route path="*" element={<Dashboard />} />
-      </Routes>
+      <UsersDataWrapper>
+        <Routes>
+          <Route path="/home" element={<Dashboard />} />
+          <Route path="/user/detail" element={<UserDetail />} />
+          <Route path="/post/detail" element={<PostDetail />} />
+          <Route path="*" element={<Dashboard />} />
+        </Routes>
+      </UsersDataWrapper>
     </ApolloProvider>
   );
 }
