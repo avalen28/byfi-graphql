@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Social Media Monitoring App 📊📈
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Social Media Monitoring App! This application allows users to monitor user and post data from a simulated social media platform. Users can view user profiles, post details, and get general insights through a user-friendly interface.
 
-## Available Scripts
+## Technologies Used 💻
 
-In the project directory, you can run:
+- React
+- TypeScript (Backend)
+- Express.js (Backend)
+- GraphQL (Frontend and Backend)
+- Apollo Client (Frontend)
+- Apollo Service (Backend)
+- Axios (Backend for external API calls)
+- Faker (Backend for generating mock data)
 
-### `npm start`
+## How to Start 🏃‍♂️
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run this application locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone this repository.
+2. Navigate to the `/frontend` directory: `cd frontend`.
+3. Install the required dependencies: `npm install`.
+4. Navigate to the `/backend` directory: `cd ../backend`.
+5. Install the required dependencies for the backend: `npm install`.
+6. Rename the `.sample.env` file to `.env` in the `/backend` directory so that you can have access to the environment variables.
+7. Start the backend server: `npm run dev` (This will start the server at port 8080).
+8. In another terminal, navigate back to the `/frontend` directory: `cd ../frontend`.
+9. Start the frontend application: `npm start`.
+10. Open your web browser and go to `http://localhost:3000` to view the app.
 
-### `npm test`
+![Developer GIF](https://serverless.pub/img/the-power-of-serverless-graphql/09-graphql-request.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Views
 
-### `npm run build`
+| View         | Route                 | Description                             |
+| ------------ | --------------------- | --------------------------------------- |
+| Dashboard    | /home                 | Get general insights on users and posts |
+| User Details | /user/detail/{userId} | View detailed information about a user  |
+| Post Details | /post/detail/{postId} | View detailed information about a post  |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Notes 📝
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The data for the main view ('/home') is generated using Faker on the backend and retrieved through GraphQL.
+- The data for the details views ('/user/detail' and '/post/detail') is fetched from an external API (jsonPlaceholder) through the backend using Axios.
+- The frontend uses Apollo Client to query the GraphQL API on the backend
+- The global state is managed using React Context.
+- If you wish to access the GraphQL API, go to `http://localhost:8080/graphql` and explore available queries in the Apollo Server UI.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Improvements that could be made to the app 🚀
 
-### `npm run eject`
+- Refactor the GraphQL resolvers on the backend to connect to a real social media API if available.
+- Implement user authentication and authorization for protected routes.
+- Add unit testing and improve code coverage.
+- Enhance the user interface for a more visually appealing experience.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+It has been an exciting development journey learning GraphQL! 💻
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Developer GIF](https://media.tenor.com/bD9vHNiR1rQAAAAM/boom-mind-blown.gif)
