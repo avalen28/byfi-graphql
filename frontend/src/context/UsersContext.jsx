@@ -1,12 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
-
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { USERS } from "../GraphQL/Queries";
 
 const UsersContext = createContext();
 
 function UsersDataWrapper(props) {
-  const { error, loading, data } = useQuery(USERS);
+  const { data } = useQuery(USERS);
   const [users, setUsers] = useState(null);
   const [posts, setPosts] = useState(null);
 
